@@ -77,4 +77,14 @@ public class SuperArray{
     }
     return "" + data[index];
   }
+
+  // 6 Question 6 - set(index, string);
+  // modifies the array at a given point;
+  public String set(int index, String value) {
+    if (index < 0 || index >= size ) {
+      return "null";
+    }
+    data[index] = value;
+    return "no error";
+  }
 }
