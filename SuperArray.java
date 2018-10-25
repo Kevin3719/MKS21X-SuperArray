@@ -68,4 +68,13 @@ public class SuperArray{
     }
     return output;
   }
+
+  // 5 Question 5 - get(index);
+  // returns the value at index; if there is no value return error.
+  public String get(int index) {
+    if (index < 0 || index >= size() ) {
+      return "null";
+    }
+    return "" + data[index];
+  }
 }
