@@ -37,5 +37,15 @@ public class SuperArray{
     return size == 0;
   }
 
+  // 3 Question 3 - add;
+  // returns true if the thing is added
+  public boolean add(String ele) {
+    if (size < data.length - 1) {
+      data[size + 1] = ele;
+      return true;
+    }
+    return false;
+  }
 
+  
 }
