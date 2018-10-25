@@ -44,8 +44,28 @@ public class SuperArray{
       data[size + 1] = ele;
       return true;
     }
+    //resize required here;
     return false;
   }
 
-  
+  // 4 Question 4 - toString;
+  // prints it so it looks like an array;
+  public String toString() {
+    String output = "[";
+    for (int x = 0; x < size; x += 1 ) {
+      output += data[x] + ",";
+    }
+    output += "]";
+    return output;
+  }
+
+  // 4.5 Question 4.5 - toString Debug;
+  // returns string but with the nulls at the end
+  public String toStringDebug() {
+    String output = this.toString();
+    for (int x = size; x < data.length; x += 1) {
+      data[x] = "null";
+    }
+    return output;
+  }
 }
