@@ -19,6 +19,23 @@ public class SuperArray{
     data = new String[n];
   }
 
+  // 1 Question 1 - clear
+  // sets size to 0; returns void
+  public void clear() {
+    size = 0;
+  }
+
+  // 2 Question 2 - size
+  // return the size; returns int
+  public int size() {
+    return size;
+  }
+
+  // 2.5 Question 2.5 - isEmpty;
+  //returns true if the value of size is 0
+  public boolean isEmpty() {
+    return size == 0;
+  }
 
 
 }
