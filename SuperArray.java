@@ -13,8 +13,11 @@ public class SuperArray{
     data = new String[10];
   }
 
-
-
+  //non-default SuperArray starts with any number of given values;
+  public SuperArray(int n) {
+    size = 0;
+    data = new String[n];
+  }
 
 
 
