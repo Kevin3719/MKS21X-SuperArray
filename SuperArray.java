@@ -101,5 +101,15 @@ public class SuperArray{
     return "no error";
   }
 
+  // 7 Question 7 - reszie();
+  // doubles the current size;
+  private void resize() {
+    int dd = data.length * 2;
+    String[] output = new String[dd];
+    for (int i = 0; i < data.length; i += 1) {
+      output[i] = data[i];
+    }
+    data = output;
+  }
 
 }
