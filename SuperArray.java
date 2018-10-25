@@ -40,14 +40,14 @@ public class SuperArray{
   // 3 Question 3 - add;
   // returns true if the thing is added
   public boolean add(String ele) {
-    if (size < data.length) {
+    boolean output = false;
+    if (size >= data.length) {
+      this.resize();
+      output = true;}
       data[size] = ele;
       size += 1;
-      return true;
+      return output;
     }
-    //resize required here;
-    return false;
-  }
 
   // 4 Question 4 - toString;
   // prints it so it looks like an array;
@@ -111,5 +111,21 @@ public class SuperArray{
     }
     data = output;
   }
+
+  // 8 Question 8 - contains(x)
+  // returns true if item is found; otherwise return false;
+  public boolean contains(String target) {
+    for (int x = 0; x < size; ) {
+      if (target.equals(data[x])) {
+        return true;
+      }
+    }
+      return false;
+  }
+
+
+
+
+
 
 }
