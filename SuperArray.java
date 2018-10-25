@@ -40,8 +40,9 @@ public class SuperArray{
   // 3 Question 3 - add;
   // returns true if the thing is added
   public boolean add(String ele) {
-    if (size < data.length - 1) {
-      data[size + 1] = ele;
+    if (size < data.length) {
+      data[size] = ele;
+      size += 1;
       return true;
     }
     //resize required here;
@@ -53,7 +54,10 @@ public class SuperArray{
   public String toString() {
     String output = "[";
     for (int x = 0; x < size; x += 1 ) {
-      output += data[x] + ",";
+      output += data[x];
+      if (x < size - 1) {
+        output += ",";
+      }
     }
     output += "]";
     return output;
@@ -62,18 +66,27 @@ public class SuperArray{
   // 4.5 Question 4.5 - toString Debug;
   // returns string but with the nulls at the end
   public String toStringDebug() {
-    String output = this.toString();
-    for (int x = size; x < data.length; x += 1) {
-      data[x] = "null";
+    String output = "[";
+    for (int x = 0; x < size - 1; x += 1 ) {
+      output += data[x];
+      if (x < size - 1) {
+        output += ",";
     }
-    return output;
+  }
+    for (int x = size; x < data.length; x += 1) {
+      output += "null";
+      if (x < data.length - 1) {
+        output += ",";
+    }
+  }
+    return output + "]";
   }
 
   // 5 Question 5 - get(index);
   // returns the value at index; if there is no value return error.
   public String get(int index) {
     if (index < 0 || index >= size() ) {
-      return "null";
+      return "null" + " ---- ERROR ----";
     }
     return "" + data[index];
   }
@@ -82,10 +95,11 @@ public class SuperArray{
   // modifies the array at a given point;
   public String set(int index, String value) {
     if (index < 0 || index >= size ) {
-      return "null";
+      return "null" + "---- ERROR ----";
     }
     data[index] = value;
     return "no error";
   }
-  
+
+
 }
