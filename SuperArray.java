@@ -115,7 +115,7 @@ public class SuperArray{
   // 8 Question 8 - contains(x)
   // returns true if item is found; otherwise return false;
   public boolean contains(String target) {
-    for (int x = 0; x < size; ) {
+    for (int x = 0; x < size; x += 1 ) {
       if (target.equals(data[x])) {
         return true;
       }
@@ -123,8 +123,27 @@ public class SuperArray{
       return false;
   }
 
+  // 9 Question 9 - indexOf ()
+  // returns the first instance of a value;
+  public int indexOf(String target) {
+    for (int x = 0; x < size; x += 1) {
+      if (target.equals(data[x])) {
+        return x;
+      }
+    }
+      return -1;
+  }
 
-
+  // 9.5 Question 9.5 - lastIndexOf ()
+  // returns the last instance of a value;
+  public int lastIndexOf(String target) {
+    for (int x = size; x >= 0; x -= 1) {
+      if (target.equals(data[x])) {
+        return x;
+      }
+    }
+    return -1;
+  }
 
 
 
