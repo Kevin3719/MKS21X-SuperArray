@@ -150,9 +150,11 @@ public class SuperArray{
   // 10 Question 10 - add with voids and ints and strings;
   // add in a location based on int value, and returns void;
   public void add(int index, String value) {
-    if (size >= data.length - 1) {
+    if (index < 0 || index > size) {
       System.out.println("----Error----");
-    } else {
+    }
+     else {
+       if (size >= data.length) {this.resize();}
     String[] output = new String[data.length];
     for (int x = 0; x < size; x += 1) {
       output[x] = data[x];
