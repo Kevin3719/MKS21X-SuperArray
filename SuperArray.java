@@ -40,13 +40,14 @@ public class SuperArray{
   // 3 Question 3 - add;
   // returns true if the thing is added
   public boolean add(String ele) {
+    boolean output = true;
     if (size >= data.length) {
-      return false;
-    }
-      data[size] = ele;
-      size += 1;
-      return true;
-    }
+      output = false;
+       this.resize();}
+       data[size] = ele;
+       size += 1;
+       return output;
+     }
 
   // 4 Question 4 - toString;
   // prints it so it looks like an array;
@@ -171,7 +172,7 @@ public class SuperArray{
   // 11 Question 11 - remove(int)
   // removes a value at a certain index
   public String remove(int index) {
-    if (size > data.length) {
+    if (index > data.length) {
       System.out.print("----Error----");
       return "null";
     } else {
@@ -195,7 +196,7 @@ public class SuperArray{
     if (this.indexOf(element) == -1) {
       return false;
     } else {
-      return this.remove(this.indexOf(element)) == element;
+      return this.remove(this.indexOf(element)).equals(element);
     }
   }
 }
