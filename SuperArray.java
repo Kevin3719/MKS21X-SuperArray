@@ -148,9 +148,9 @@ public class SuperArray{
   // 10 Question 10 - add with voids and ints and strings;
   // add in a location based on int value, and returns void;
   public void add(int index, String value) {
-    if (size >= data.length) {
-      this.resize();
-    }
+    if (size > data.length) {
+      System.out.println("----Error----");
+    } else {
     String[] output = new String[data.length];
     for (int x = 0; x < index; x += 1) {
       output[x] = data[x];
@@ -161,6 +161,27 @@ public class SuperArray{
     }
     data = output;
   }
+}
 
+  // 11 Question 11 - remove(int)
+  // removes a value at a certain index
+  public String remove(int index) {
+    if (size > data.length) {
+      System.out.print("----Error----");
+      return "null";
+    } else {
+    String[] output = new String[data.length];
+    for (int x = 0; x < index; x += 1) {
+      output[x] = data[x];
+    }
+    for (int x = index + 1; x < data.length; x += 1) {
+      output[x - 1] = data[x];
+    }
+    String saved = data[index];
+    data = output;
+      return saved;
+  }
+  }
 
+  // 12 Question 12 -
 }
