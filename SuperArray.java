@@ -183,5 +183,13 @@ public class SuperArray{
   }
   }
 
-  // 12 Question 12 -
+  // 12 Question 12 - remove(element)
+  // testing if index and remove work at the same time; Looks a bit ugly but it is a quick way to write it and it checks if everything works.
+  public boolean remove(String element) {
+    if (this.indexOf(element) == -1) {
+      return false;
+    } else {
+      return this.remove(this.indexOf(element)) == element;
+    }
+  }
 }
