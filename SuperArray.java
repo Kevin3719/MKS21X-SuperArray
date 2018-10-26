@@ -145,9 +145,22 @@ public class SuperArray{
     return -1;
   }
 
-
-  
-
+  // 10 Question 10 - add with voids and ints and strings;
+  // add in a location based on int value, and returns void;
+  public void add(int index, String value) {
+    if (size >= data.length) {
+      this.resize();
+    }
+    String[] output = new String[data.length];
+    for (int x = 0; x < index; x += 1) {
+      output[x] = data[x];
+    }
+    output[index] = value;
+    for (int x = index; x < data.length; x += 1) {
+      output[x + 1] = data[x];
+    }
+    data = output;
+  }
 
 
 }
