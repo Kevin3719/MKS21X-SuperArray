@@ -40,13 +40,12 @@ public class SuperArray{
   // 3 Question 3 - add;
   // returns true if the thing is added
   public boolean add(String ele) {
-    boolean output = false;
     if (size >= data.length) {
-      this.resize();
-      output = true;}
+      return false;
+    }
       data[size] = ele;
       size += 1;
-      return output;
+      return true;
     }
 
   // 4 Question 4 - toString;
@@ -67,19 +66,22 @@ public class SuperArray{
   // returns string but with the nulls at the end
   public String toStringDebug() {
     String output = "[";
-    for (int x = 0; x < size - 1; x += 1 ) {
+    for (int x = 0; x < size; x += 1 ) {
       output += data[x];
       if (x < size - 1) {
         output += ",";
     }
   }
     for (int x = size; x < data.length; x += 1) {
+      if (x == size && x > 0) {
+        output += ",";
+      }
       output += "null";
       if (x < data.length - 1) {
         output += ",";
     }
   }
-    return output + "]";
+    return output + "]" ;
   }
 
   // 5 Question 5 - get(index);
@@ -148,17 +150,18 @@ public class SuperArray{
   // 10 Question 10 - add with voids and ints and strings;
   // add in a location based on int value, and returns void;
   public void add(int index, String value) {
-    if (size > data.length) {
+    if (size >= data.length - 1) {
       System.out.println("----Error----");
     } else {
     String[] output = new String[data.length];
-    for (int x = 0; x < index; x += 1) {
+    for (int x = 0; x < size; x += 1) {
       output[x] = data[x];
     }
     output[index] = value;
-    for (int x = index; x < data.length; x += 1) {
+    for (int x = index; x < size; x += 1) {
       output[x + 1] = data[x];
     }
+    size += 1;
     data = output;
   }
 }
@@ -179,6 +182,7 @@ public class SuperArray{
     }
     String saved = data[index];
     data = output;
+    size -= 1;
       return saved;
   }
   }
