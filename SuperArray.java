@@ -12,13 +12,6 @@ public class SuperArray{
     size = 0;
     data = new String[10];
   }
-
-  //non-default SuperArray starts with any number of given values;
-  public SuperArray(int n) {
-    size = 0;
-    data = new String[n];
-  }
-
   // 1 Question 1 - clear
   // sets size to 0; returns void
   public void clear() {
@@ -89,7 +82,7 @@ public class SuperArray{
   // returns the value at index; if there is no value return error.
   public String get(int index) {
     if (index < 0 || index >= size() ) {
-      return "null" + " ---- ERROR ----";
+        throw new IllegalArgumentException("index cannot be negative or bigger than the size");
     }
     return "" + data[index];
   }
@@ -98,7 +91,7 @@ public class SuperArray{
   // modifies the array at a given point;
   public String set(int index, String value) {
     if (index < 0 || index >= size ) {
-      return "null" + "---- ERROR ----";
+      throw new IllegalArgumentException("index cannot be negative or bigger than the size");
     }
     data[index] = value;
     return "no error";
@@ -107,7 +100,7 @@ public class SuperArray{
   // 7 Question 7 - reszie();
   // doubles the current size;
   private void resize() {
-    int dd = data.length * 2;
+    int dd = data.length * 2 + 1;
     String[] output = new String[dd];
     for (int i = 0; i < data.length; i += 1) {
       output[i] = data[i];
@@ -152,7 +145,7 @@ public class SuperArray{
   // add in a location based on int value, and returns void;
   public void add(int index, String value) {
     if (index < 0 || index > size) {
-      System.out.println("----Error----");
+      throw new IllegalArgumentException("index cannot be negative or bigger than the size");
     }
      else {
        if (size >= data.length) {this.resize();}
@@ -172,9 +165,8 @@ public class SuperArray{
   // 11 Question 11 - remove(int)
   // removes a value at a certain index
   public String remove(int index) {
-    if (index > data.length) {
-      System.out.print("----Error----");
-      return "null";
+    if (index > size) {
+      throw new IllegalArgumentException("index cannot be bigger than the size");
     } else {
     String[] output = new String[data.length];
     for (int x = 0; x < index; x += 1) {
@@ -199,4 +191,17 @@ public class SuperArray{
       return this.remove(this.indexOf(element)).equals(element);
     }
   }
+
+  //  PART 2 ///////
+  // Adding Exceptions
+
+  // 2.0 Nondefault SuperArray //
+  //non-default SuperArray starts with any number of given values;
+    public SuperArray(int n) {
+      size = 0;
+      data = new String[n];
+    }
+
+  // 2.1 Question 2.1 - Index out of Bounds
+  // Adding Error Message //
 }
