@@ -82,7 +82,7 @@ public class SuperArray{
   // returns the value at index; if there is no value return error.
   public String get(int index) {
     if (index < 0 || index >= size() ) {
-        throw new IllegalArgumentException("index cannot be negative or bigger than the size");
+        throw new IndexOutOfBoundsException("index cannot be negative or bigger than the size");
     }
     return "" + data[index];
   }
@@ -91,10 +91,10 @@ public class SuperArray{
   // modifies the array at a given point;
   public String set(int index, String value) {
     if (index < 0 || index >= size ) {
-      throw new IllegalArgumentException("index cannot be negative or bigger than the size");
+      throw new IndexOutOfBoundsException("index cannot be negative or bigger than the size");
     }
     data[index] = value;
-    return "no error";
+    return value;
   }
 
   // 7 Question 7 - reszie();
@@ -145,7 +145,7 @@ public class SuperArray{
   // add in a location based on int value, and returns void;
   public void add(int index, String value) {
     if (index < 0 || index > size) {
-      throw new IllegalArgumentException("index cannot be negative or bigger than the size");
+      throw new IndexOutOfBoundsException("index cannot be negative or bigger than the size");
     }
      else {
        if (size >= data.length) {this.resize();}
@@ -165,8 +165,8 @@ public class SuperArray{
   // 11 Question 11 - remove(int)
   // removes a value at a certain index
   public String remove(int index) {
-    if (index > size) {
-      throw new IllegalArgumentException("index cannot be bigger than the size");
+    if (index < 0 || index > size) {
+      throw new IndexOutOfBoundsException("index cannot be bigger than the size");
     } else {
     String[] output = new String[data.length];
     for (int x = 0; x < index; x += 1) {
@@ -198,6 +198,9 @@ public class SuperArray{
   // 2.0 Nondefault SuperArray //
   //non-default SuperArray starts with any number of given values;
     public SuperArray(int n) {
+      if (n < 0 || n > size) {
+        throw new IndexOutOfBoundsException("index cannot be negative or bigger than the size");
+      }
       size = 0;
       data = new String[n];
     }
