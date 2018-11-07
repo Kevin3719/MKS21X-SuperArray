@@ -33,13 +33,11 @@ public class SuperArray{
   // 3 Question 3 - add;
   // returns true if the thing is added
   public boolean add(String ele) {
-    boolean output = true;
-    if (size >= data.length) {
-      output = false;
+    if (size() == data.length) {
        this.resize();}
        data[size] = ele;
        size += 1;
-       return output;
+       return true;
      }
 
   // 4 Question 4 - toString;
@@ -84,7 +82,7 @@ public class SuperArray{
     if (index < 0 || index >= size() ) {
         throw new IndexOutOfBoundsException("index cannot be negative or bigger than the size");
     }
-    return "" + data[index];
+    return data[index];
   }
 
   // 6 Question 6 - set(index, string);
@@ -93,8 +91,9 @@ public class SuperArray{
     if (index < 0 || index >= size ) {
       throw new IndexOutOfBoundsException("index cannot be negative or bigger than the size");
     }
+    String save = data[index];
     data[index] = value;
-    return value;
+    return save;
   }
 
   // 7 Question 7 - reszie();
@@ -143,24 +142,23 @@ public class SuperArray{
 
   // 10 Question 10 - add with voids and ints and strings;
   // add in a location based on int value, and returns void;
-  public void add(int index, String value) {
-    if (index < 0 || index > size) {
-      throw new IndexOutOfBoundsException("index cannot be negative or bigger than the size");
-    }
-     else {
-       if (size >= data.length) {this.resize();}
-    String[] output = new String[data.length];
-    for (int x = 0; x < size; x += 1) {
-      output[x] = data[x];
-    }
-    output[index] = value;
-    for (int x = index; x < size; x += 1) {
-      output[x + 1] = data[x];
-    }
-    size += 1;
-    data = output;
+  public void add(int index, String element){
+      if (index < 0 || index > this.size()) {
+          throw new IndexOutOfBoundsException("Cannot be negative or greater than size");
+      }
+      if (data.length == this.size()) {
+        this.resize();
+      }
+      for (int i = this.size(); i > -1; i -= 1) {
+        if (i == index) {
+          data[i] = element;
+        }
+        if (i > index) {
+          data[i] = data[i - 1];
+        }
+      }
+      size += 1;
   }
-}
 
   // 11 Question 11 - remove(int)
   // removes a value at a certain index
@@ -188,8 +186,9 @@ public class SuperArray{
     if (this.indexOf(element) == -1) {
       return false;
     } else {
-      return this.remove(this.indexOf(element)).equals(element);
+      this.remove(this.indexOf(element)).equals(element);
     }
+    return true;
   }
 
   //  PART 2 ///////
@@ -198,8 +197,8 @@ public class SuperArray{
   // 2.0 Nondefault SuperArray //
   //non-default SuperArray starts with any number of given values;
     public SuperArray(int n) {
-      if (n < 0 || n > size) {
-        throw new IndexOutOfBoundsException("index cannot be negative or bigger than the size");
+      if (n < 0) {
+        throw new IllegalArgumentException("index cannot be negative or bigger than the size");
       }
       size = 0;
       data = new String[n];
